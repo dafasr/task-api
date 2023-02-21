@@ -1,35 +1,34 @@
 const Task = require('../api/tugas/model');
 
-const getAllTasks = async () => {
+async function getAllTasks() {
   const tasks = await Task.find({});
   return tasks;
-};
+}
 
-const createTask = async (task) => {
-  const newTask = new Task(task);
-  await newTask.save();
-  return newTask;
-};
-
-const getTaskById = async (id) => {
+async function getTaskById(id) {
   const task = await Task.findById(id);
   return task;
-};
+}
 
-const updateTask = async (id, updates) => {
-  const task = await Task.findByIdAndUpdate(id, updates, { new: true });
-  return task;
-};
+async function createTask(task) {
+  const createdTask = await Task.create(task);
+  return createdTask;
+}
 
-const deleteTask = async (id) => {
-  const task = await Task.findByIdAndDelete(id);
-  return task;
-};
+async function updateTask(id, update) {
+  const updatedTask = await Task.findByIdAndUpdate(id, update, { new: true });
+  return updatedTask;
+}
+
+async function deleteTask(id) {
+  const deletedTask = await Task.findByIdAndDelete(id);
+  return deletedTask;
+}
 
 module.exports = {
   getAllTasks,
-  createTask,
   getTaskById,
+  createTask,
   updateTask,
   deleteTask,
 };

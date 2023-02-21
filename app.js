@@ -7,6 +7,8 @@ var logger = require('morgan');
 var cors = require('cors');
 const errorHandler = require('./app/middlewares/errorHandler');
 const notFoundHandler = require('./app/middlewares/notFoundHandler');
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
 
 var app = express();
 
